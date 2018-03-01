@@ -1,0 +1,27 @@
+package com.qingniao.core.pojo.cart;
+
+import java.util.List;
+
+/**
+ * 
+ * 购物车
+ * @author Administrator
+ *
+ */
+public class UserCart {
+	private List<UserItem> userItems;
+
+	public List<UserItem> getUserItems() {
+		return userItems;
+	}
+
+	public void setUserItems(List userItems) {
+		this.userItems = userItems;
+	}
+	//添加购物项
+	public void addUserItem(UserItem userItem) {
+		userItems.add(userItem);
+	} 
+	
+	
+}

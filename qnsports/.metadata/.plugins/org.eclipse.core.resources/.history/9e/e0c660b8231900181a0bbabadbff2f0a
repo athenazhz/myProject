@@ -1,0 +1,10 @@
+package com.qingniao.core.pojo.cart;
+/**
+ * 
+ * 购物车
+ * @author Administrator
+ *
+ */
+public class UserCart {
+	
+}

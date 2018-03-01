@@ -1,0 +1,24 @@
+package com.qingniao.test;
+
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+/**
+ * 购物车测试
+ * 把json转换成对象，把对象转换成json
+ * @author Administrator
+ *
+ */
+@RunWith(SpringJUnit4ClassRunner.class)
+
+public class CartTest {
+	//把对象转换成json
+	@Test
+	public void demo1() {
+		ObjectMapper objectMapper = new ObjectMapper();
+		//将对象中为null的属性忽略掉
+		objectMapper.setSerializationInclusion(Inclusion.NON_NULL);
+	}
+}

@@ -1,0 +1,15 @@
+package com.qingniao.test;
+
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+/**
+ * 
+ * 把购物车转换成对象，把对象转换成购物车
+ * @author Administrator
+ *
+ */
+@RunWith(SpringJUnit4ClassRunner.class)
+
+public class CartTest {
+
+}

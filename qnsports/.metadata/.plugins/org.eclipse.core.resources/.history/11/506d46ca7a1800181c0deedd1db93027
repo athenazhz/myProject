@@ -1,0 +1,10 @@
+package com.qingniao.core.utils.web;
+/**
+ * 
+ * 用户登录拦截器
+ * @author Administrator
+ *
+ */
+public class LoginIntercetptor {
+
+}

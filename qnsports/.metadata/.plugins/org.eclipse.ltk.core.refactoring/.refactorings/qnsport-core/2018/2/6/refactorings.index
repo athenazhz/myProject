@@ -1,0 +1,5 @@
+1517825305399	Extract local variable 'query'
+1517825343298	Extract local variable 'docs'
+1517991813877	Extract local variable 'selectByExample'
+1517992480700	Extract local variable 'selectMinPrice'
+1518244962752	Extract local variable 'img'

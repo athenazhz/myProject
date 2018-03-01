@@ -1,0 +1,11 @@
+1518529040171	Extract local variable 'configuration'
+1518529732550	Extract local variable 'realPath'
+1518530093215	Extract local variable 'template'
+1518530891331	Extract local variable 'selectByExample'
+1518596673053	Extract local variable 'session'
+1518597988186	Extract local variable 'cookies'
+1518598041676	Extract local variable 'sessoinId'
+1518598948676	Extract local variable 'jedis'
+1518599309616	Extract local variable 'jedis'
+1518599393479	Extract local variable 'value'
+1518601226143	Delete element

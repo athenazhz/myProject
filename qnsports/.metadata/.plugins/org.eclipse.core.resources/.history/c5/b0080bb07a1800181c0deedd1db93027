@@ -1,0 +1,5 @@
+package com.qingniao.core.utils.web;
+
+public class LoginIntercetptor {
+
+}
