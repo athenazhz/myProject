@@ -1,0 +1,102 @@
+package com.qingniao.core.service.impl;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.common.SolrInputDocument;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.qingniao.common.page.PageInfo;
+import com.qingniao.core.dao.product.ImgMapper;
+import com.qingniao.core.dao.product.ProductMapper;
+import com.qingniao.core.dao.product.SkuMapper;
+import com.qingniao.core.pojo.product.Img;
+import com.qingniao.core.pojo.product.ImgExample;
+import com.qingniao.core.pojo.product.Product;
+import com.qingniao.core.pojo.product.ProductExample;
+import com.qingniao.core.pojo.product.Sku;
+import com.qingniao.core.service.ProductService;
+@Service
+@Transactional
+public class ProductServiceImpl implements ProductService {
+	@Autowired
+	private ProductMapper productMapper;
+	@Autowired
+	private ImgMapper imgMapper;
+	@Autowired
+	private SkuMapper skuMapper;
+	@Autowired
+	private SolrServer solrServer;
+	public void insertProduct(Product product) {
+		productMapper.insertSelective(product);
+	}
+	@Override
+	public PageInfo selectByExample(ProductExample productExample) {
+		PageInfo pageInfo = new PageInfo(productExample.getPageNo(),productExample.getPageSize(),productMapper.countByExample(productExample));
+		productExample.setPageNo(pageInfo.getPageNo());
+		List<Product> productList = productMapper.selectByExample(productExample);
+		for (Product product : productList) {
+			ImgExample imgExample = new ImgExample();
+			imgExample.createCriteria().andProductIdEqualTo(product.getId()).andIsDefEqualTo(false);
+			List<Img> imgList = imgMapper.selectByExample(imgExample);
+			if (imgList.size()>0) {
+				product.setImg(imgList.get(0));
+			}
+		}
+		pageInfo.setList(productList);
+		return pageInfo;
+	}
+	@Override
+	public void onSale(Long[] ids) {
+		List<Long> idList = new ArrayList<Long>();
+		for (Long id : ids) {
+			idList.add(id);
+			Product p = productMapper.selectByPrimaryKey(id);
+			SolrInputDocument document = new SolrInputDocument();
+			//要将product的id，name，图片路径，价格，品牌id存入solr
+			document.setField("id", p.getId());
+			document.setField("name_ik", p.getName());
+			ImgExample imgExample = new ImgExample();
+			imgExample.createCriteria().andProductIdEqualTo(id).andIsDefEqualTo(false);
+			List<Img> imgs = imgMapper.selectByExample(imgExample);
+			document.setField("url", imgs.get(0).getImgUrl());
+			float price = skuMapper.selectMinPrice(id);
+			document.setField("price", price);
+			document.setField("brandId", p.getBrandId());
+			try {
+				solrServer.add(document);
+				solrServer.commit();
+			} catch (SolrServerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		ProductExample productExample = new ProductExample();
+		Product product = new Product();
+		product.setIsShow(true);
+		productExample.createCriteria().andIdIn(idList);
+		productMapper.updateByExampleSelective(product, productExample);
+		
+	}
+	
+	public void sellOut(Long[] ids) {
+		List<Long> idList = new ArrayList<Long>();
+		for (Long id : ids) {
+			idList.add(id);
+		}
+		ProductExample productExample = new ProductExample();
+		Product product = new Product();
+		product.setIsShow(false);
+		productExample.createCriteria().andIdIn(idList);
+		productMapper.updateByExampleSelective(product, productExample);
+	}
+}

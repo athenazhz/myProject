@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Thu Mar 01 13:57:56 CST 2018
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\Administrator\\.m2\\repository\\org\\springframework\\spring-web\\3.2.0.RELEASE\\spring-web-3.2.0.RELEASE.jar=WEB-INF/lib/spring-web-3.2.0.RELEASE.jar
+org.eclipse.jst.j2ee.server\:qnsport-core=WEB-INF/lib/qnsport-core-0.0.1-SNAPSHOT.jar

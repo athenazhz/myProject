@@ -1,0 +1,5 @@
+1519369375500	Extract local variable 'users'
+1519451331247	Extract local variable 'user2'
+1519457665041	Extract local variable 'sku'
+1519457999013	Extract local variable 'product'
+1519458145604	Extract local variable 'selectByExample'

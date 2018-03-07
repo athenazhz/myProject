@@ -1,0 +1,11 @@
+package com.qingniao.core.utils;
+/**
+ * 
+ * 
+ * 定义常量
+ * @author Administrator
+ *
+ */
+public interface Constants {
+
+}
