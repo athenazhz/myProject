@@ -1,5 +1,0 @@
-package com.qingniao.core.service;
-
-public interface LoginService {
-	
-}

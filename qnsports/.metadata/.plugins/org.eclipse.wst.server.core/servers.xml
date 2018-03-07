@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<servers>
-  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/console-config" deployDir="wtpwebapps" hostname="localhost" id="console" name="console" runtime-id="Apache Tomcat v7.0" server-type="org.eclipse.jst.server.tomcat.70" server-type-id="org.eclipse.jst.server.tomcat.70" start-timeout="200" stop-timeout="200" testEnvironment="true" timestamp="3">
-    <list key="modules" value0="qnsport-console::org.eclipse.jst.jee.server:qnsport-console::jst.web::2.5"/>
-  </server>
-  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/partal-config" deployDir="wtpwebapps" hostname="localhost" id="partal" name="partal" runtime-id="Apache Tomcat v7.0" server-type="org.eclipse.jst.server.tomcat.70" server-type-id="org.eclipse.jst.server.tomcat.70" start-timeout="200" stop-timeout="200" testEnvironment="true" timestamp="2">
-    <list key="modules" value0="qnsport-partal::org.eclipse.jst.jee.server:qnsport-partal::jst.web::2.5"/>
-  </server>
-</servers>

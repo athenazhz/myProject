@@ -1,7 +1,0 @@
-package com.qingniao.core.service.impl;
-
-import com.qingniao.core.service.LoginService;
-
-public class LoginServiceImpl implements LoginService {
-
-}
