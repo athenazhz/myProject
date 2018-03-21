@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- 反向工程生成代码配置 -->
+<generatorConfiguration>
+	<!--targetRuntime目标运行环境 mybatis3  -->
+  <context id="DB2Tables" targetRuntime="MyBatis3">
+    <commentGenerator>
+			<property name="suppressAllComments" value="true" />
+	</commentGenerator>
+	<!-- 数据库连接信息配置 -->
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/items?characterEncoding=UTF-8"
+        userId="root"
+        password="hzhuangbei">
+    </jdbcConnection>
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+	<!-- pojo类信息的配置 
+	targetPackage表示目标文件夹
+	targetProject表示目标根目录，意思是当前目标文件夹存放在哪个根目录下
+	-->
+    <javaModelGenerator targetPackage="com.mybatis.pojo" targetProject=".\src">
+    <!-- 是否加注释 -->
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+	<!-- sql映射文件的配置信息 -->
+    <sqlMapGenerator targetPackage="mapper"  targetProject=".\config">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+	<!-- dao接口类的配置信息 -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.mybatis.dao"  targetProject=".\src">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+	<!-- table标签表示表格标签，tableName表示数据库的表名  domainObjectName表示实体类名称的属性 -->
+    <table  tableName="items" domainObjectName="Items" >
+    </table>
+    <table  tableName="kinds" domainObjectName="Kinds" >
+    </table>
+  </context>
+</generatorConfiguration>

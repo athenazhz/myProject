@@ -1,6 +1,0 @@
-1519625188923	Extract local variable 'cookies'
-1519630593434	Extract local variable 'userCart'
-1519633621655	Extract local variable 'jedis'
-1519634740718	Extract local variable 'skuIds'
-1519639302756	Extract local variable 'username'
-1519639456238	Extract local variable 'jedis'
